@@ -3,7 +3,7 @@ import knex from "knex";
 
 dotEnv.config();
 
-const Knex = knex({
+const _Knex = knex({
     client: 'mysql2',
     connection: {
       host : process.env.DB_HOST,
@@ -16,5 +16,5 @@ const Knex = knex({
 
 
 export {
-    Knex
+    _Knex
 }

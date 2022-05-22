@@ -15,8 +15,8 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 //PATHS
-app.use('/users', UsersRoute);
-app.use('/adresses', AdressesRoute);
+app.use('/v1/users', UsersRoute);
+app.use('/v1/adresses', AdressesRoute);
 
 export const serverHttp = createServer(app);
 

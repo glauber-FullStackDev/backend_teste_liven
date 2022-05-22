@@ -1,5 +1,5 @@
-import { Knex } from "../database/mysql.config";
 import { uuid } from "uuidv4";
+import { Knex } from "../app";
 import { STATUS } from "../Utils/Constants.utils";
 
 const table = "users";

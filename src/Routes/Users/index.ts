@@ -7,7 +7,7 @@ const router: Router = Router();
 
 router.post('/create-user', checkBodyCreateUser, checkResultInputsCreateUser, onCreateNewUser);
 router.post('/sign-in', checkBodyInputsSignin, checkResultInputsSignin, onSignIn);
-router.post('/update', authToken, onUpdateDataByUserID);
-router.get('/delete/:id', authToken, onDeleteUser);
+router.put('/update', authToken, onUpdateDataByUserID);
+router.delete('/delete/:id', authToken, onDeleteUser);
 
 export default router;
