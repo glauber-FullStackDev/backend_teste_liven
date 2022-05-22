@@ -1,19 +1,22 @@
 import dotEnv from 'dotenv';
 import express from "express";
 import cors from 'cors';
-import bodyParser from 'body-parser';
-import http from 'http';
+import { json, urlencoded } from 'body-parser';
+import { createServer } from 'http';
+import UsersRoute from './Routes/Users';
+import AdressesRoute from './Routes/Adresses'; 
 
 const app = express();
 dotEnv.config();
 
 app.use(cors());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 
-// PATHS
-// app.use('/user', userRoute);
+//PATHS
+app.use('/users', UsersRoute);
+app.use('/adresses', AdressesRoute);
 
-export const serverHttp = http.createServer(app);
+export const serverHttp = createServer(app);
 
