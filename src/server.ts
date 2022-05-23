@@ -5,6 +5,8 @@ import { json, urlencoded } from 'body-parser';
 import { createServer } from 'http';
 import UsersRoute from './Routes/Users';
 import AdressesRoute from './Routes/Adresses'; 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocs from './swagger.json';
 
 export const app = express();
 dotEnv.config({
@@ -12,6 +14,8 @@ dotEnv.config({
 });
 
 app.use(cors());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
