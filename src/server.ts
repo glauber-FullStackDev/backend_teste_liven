@@ -6,8 +6,10 @@ import { createServer } from 'http';
 import UsersRoute from './Routes/Users';
 import AdressesRoute from './Routes/Adresses'; 
 
-const app = express();
-dotEnv.config();
+export const app = express();
+dotEnv.config({
+    path: process.env.NODE_ENV == 'test' ? '.env.test' : '.env'
+});
 
 app.use(cors());
 

@@ -1,7 +1,12 @@
 import { uuid } from "uuidv4";
-import { Knex } from "../app";
+import dotEnv from 'dotenv';
+dotEnv.config({
+  path: process.env.NODE_ENV == 'test' ? '.env.test' : '.env'
+});
+import { _Knex } from '../database/mysql.config'
 import { STATUS } from "../Utils/Constants.utils";
 
+const Knex = _Knex;
 const table = "users";
 
 export const addNewUser = async (dataUser: any) => {
@@ -42,7 +47,7 @@ export const selectUserById = (idUser: string) => {
 };
 
 export const selectDataUserAndAdressesByUserID = async (idUser: string) => {
-  let sql = ``;
+  let sql = `select u.*, a.*, a.id as idAddress from users as u inner join adresses as a on u.id = a.userID where u.id = "${idUser}";`;
   return (await Knex.raw(sql))[0];
 };
 

@@ -1,7 +1,9 @@
+import { Address } from './../Interfaces/Address';
 import {
   addNewAddress,
   updateInputsAddress,
   getAdressesByID,
+  getAllAdressesByUserID
 } from "../Models/Adresses.model";
 
 import { STATUS } from '../Utils/Constants.utils'
@@ -16,7 +18,7 @@ export const updateInputsByIdAddress = async (
   dataInputs: any
 ) => {
   try {
-    const dataAddressAtual: any = await getAdressesByID(idAddress);
+    const dataAddressAtual: Address = await getAdressesByID(idAddress);
 
     if (dataAddressAtual.userID !== userID) {
       return Promise.reject(new Error("not authorized"));
@@ -30,7 +32,7 @@ export const updateInputsByIdAddress = async (
 
 export const deleteAddress = async (idAddress: string, userID: string) => {
   try {
-    const dataAddressAtual: any = await getAdressesByID(idAddress);
+    const dataAddressAtual: Address = await getAdressesByID(idAddress);
 
     if (dataAddressAtual.userID !== userID) {
       return Promise.reject(new Error("not authorized"));
@@ -42,3 +44,7 @@ export const deleteAddress = async (idAddress: string, userID: string) => {
     return Promise.reject(new Error(error.message));
   }
 };
+
+export const getAdresses = (userID: string, conditions: any) => {
+  return getAllAdressesByUserID(userID, conditions);
+}

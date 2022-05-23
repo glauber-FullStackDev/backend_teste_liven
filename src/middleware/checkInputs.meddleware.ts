@@ -29,7 +29,7 @@ export const checkResultInputsCreateUser = async (
       let emailAlreadyExist = await checkEmailAlreadyExist(req.body.email);
 
       if (emailAlreadyExist) {
-        return res.status(400).json({ errors: "email already in use" });
+        return res.status(400).json({ error: true, message: "email already in use" });
       } else {
         next();
       }

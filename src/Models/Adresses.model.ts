@@ -1,7 +1,8 @@
 import { uuid } from "uuidv4";
-import { Knex } from "../app";
+import { _Knex } from "../database/mysql.config";
 import { STATUS } from "../Utils/Constants.utils";
 
+const Knex = _Knex;
 const table = "adresses";
 
 export const addNewAddress = async (userID: string, dataAddres: any) => {
@@ -40,8 +41,8 @@ export const updateInputsAddress = async (
   }
 };
 
-export const getAllAdressesByUserID = (userID: string) => {
-  return Knex.select("*").from(table).where({ userID });
+export const getAllAdressesByUserID = (userID: string, conditions: any) => {
+  return Knex.select("*").from(table).where({ userID, ... conditions});
 };
 
 export const getAdressesByID = async (ID: string) => {
