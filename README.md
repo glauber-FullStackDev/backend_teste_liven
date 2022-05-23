@@ -34,5 +34,5 @@ e processamento dos dados e nos Routes dividimos as rotas e os handlers em arqui
 
 # Documentação
 
-Como foi solicitado no manual, a documentação foi desenvolvida com o Swagger. pode ser acessado na rota **/api-docs**
+Como foi solicitado no manual, a documentação foi desenvolvida com o Swagger. pode ser acessado na rota   */api-docs*
 
